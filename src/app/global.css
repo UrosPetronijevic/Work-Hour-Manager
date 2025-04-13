@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+.input-gradient-border {
+  position: relative;
+  overflow: hidden; /* prevent the pseudo-element from overflowing */
+}
+
+.input-gradient-border::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Match border width */
+  background: linear-gradient(
+    to right,
+    #e0e7ff,
+    #c7d2fe,
+    #a5b4fc,
+    #818cf8,
+    #6366f1
+  );
+  transform: translateX(-100%); /* Initially hide the gradient */
+  transition: transform 0.3s ease-in-out;
+}
+
+.input-gradient-border:focus::before {
+  transform: translateX(0); /* Show the gradient on focus */
+}

@@ -1,16 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useState, ChangeEvent, Dispatch, SetStateAction } from "react";
 
 export default function LoginForm() {
+  const [email, setEmail] = useState<string>("");
+  const [kadrovskiBroj, setKadrovskiBroj] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    setter: Dispatch<SetStateAction<string>>
+  ) => {
+    setter(event.target.value);
+  };
+
   return (
-    <div className="w-full max-w-lg p-6 bg-white rounded-md shadow-md flex flex-col scale-90">
-      <h2 className="text-4xl font-semibold text-gray-800 mb-8">Prijava</h2>
-      <ul className="space-y-5">
-        <li>
-          <div className="flex items-center">
-            <label
-              htmlFor="email"
-              className="w-32 text-sm font-medium text-gray-700"
-            >
+    <div className="w-full max-w-md py-6 px-10 bg-white rounded-md shadow-md flex flex-col gap-4">
+      <h2 className="text-3xl font-semibold text-gray-800 mb-6">Prijava</h2>
+      <ul className="flex flex-col gap-8">
+        <li className="w-full">
+          <div className="flex flex-col items-start gap-2 w-full">
+            <label htmlFor="email" className="w-40 text-sm font-medium">
               Email:
             </label>
             <input
@@ -18,49 +28,50 @@ export default function LoginForm() {
               id="email"
               name="email"
               placeholder="example@mail.com"
-              className="ml-4 flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+              className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
+              value={email}
+              onChange={(event) => handleChange(event, setEmail)}
             />
           </div>
         </li>
-        <li>
-          <div className="flex items-center">
-            <label
-              htmlFor="password"
-              className="w-32 text-sm font-medium text-gray-700"
-            >
-              Password:
+
+        <li className="w-full">
+          <div className="flex flex-col items-start gap-2 w-full">
+            <label htmlFor="password" className="w-40 text-sm font-medium">
+              Lozinka:
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              placeholder="Enter your password"
-              className="ml-4 flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+              placeholder="Unesite vasu lozinku"
+              className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
+              value={password}
+              onChange={(event) => handleChange(event, setPassword)}
             />
           </div>
         </li>
 
-        <li>
-          <div className="flex items-center">
-            <label
-              htmlFor="kadrovskiBroj"
-              className="w-32 text-sm font-medium text-gray-700"
-            >
+        <li className="w-full">
+          <div className="flex flex-col items-start gap-2 w-full">
+            <label htmlFor="kadrovskiBroj" className="w-40 text-sm font-medium">
               Kadrovski Broj:
             </label>
             <input
-              type="text"
+              type="kadrovskiBroj"
               id="kadrovskiBroj"
               name="kadrovskiBroj"
               placeholder="123"
-              className="ml-4 flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+              className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
+              value={kadrovskiBroj}
+              onChange={(event) => handleChange(event, setKadrovskiBroj)}
             />
           </div>
         </li>
       </ul>
       <button
         type="submit"
-        className="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline self-end"
+        className="mt-4 bg-[#F99417] hover:bg-orange-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline self-end"
       >
         Prijavi se
       </button>
