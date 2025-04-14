@@ -15,6 +15,13 @@ export default function Page() {
       >
         Registruj se
       </Link>
+
+      <Link
+        href="/main"
+        className="py-2 px-6 text-white text-[1.2rem] bg-[#F99417] w-[10%] rounded-[.5rem] text-center"
+      >
+        home
+      </Link>
     </div>
   );
 }
