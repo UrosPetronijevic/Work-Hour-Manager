@@ -18,5 +18,5 @@ export default function MainPage() {
     }
   };
 
-  return <div className="min-h-screen max-w-screen">{renderComponent()}</div>;
+  return <div className="max-w-screen">{renderComponent()}</div>;
 }
