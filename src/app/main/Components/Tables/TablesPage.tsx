@@ -15,13 +15,17 @@ export default function TablesPage() {
   const renderComponent = () => {
     switch (selectedValue) {
       case "Mor":
+        return <TableMor mor={selectedValue} />;
       case "MorPP":
+        return <TableMor mor={selectedValue} />;
       case "MorZadruga":
         return <TableMor mor={selectedValue} />;
       case "Pripravnost":
         return <TablePripravnost />;
       case "Prevoz 1":
+        return <TablePrevoz prevoz={selectedValue} />;
       case "Prevoz 2":
+        return <TablePrevoz prevoz={selectedValue} />;
       case "Prevoz 3":
         return <TablePrevoz prevoz={selectedValue} />;
       case "Dodatno opt.":

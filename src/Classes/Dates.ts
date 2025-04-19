@@ -36,3 +36,11 @@ export const daysOfWeek = [
 ];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//DATE FORMATING
+export function formatDateToDots(date: Date): string {
+  const day = String(date.getDate()).padStart(2, "0"); // Get day, pad with leading zero if needed
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Get month (0-11), add 1, pad with leading zero
+  const year = date.getFullYear(); // Get full year
+
+  return `${day}.${month}.${year}`;
+}

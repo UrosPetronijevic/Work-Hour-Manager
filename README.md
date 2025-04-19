@@ -36,48 +36,64 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 Stucture:
-src/
-├── app/
-│ ├── (auth)/ # Route Group for Authentication Pages
-│ │ ├── sign-in/
-│ │ │ └── page.tsx # Login Page
-│ │ ├── sign-up/
-│ │ │ └── page.tsx # Registration Page
-│ │ └── layout.tsx # Layout for authentication pages (optional - different look)
-│ ├── main/ # Route Group for Main Application (After Login)
-│ │ ├── page.tsx # The MainPage component
-│ │ └── layout.tsx # Layout for the authenticated app
-│ ├── page.tsx # Landing page (Sign-in/Sign-up options)
-│ ├── layout.tsx # Root layout for the entire app
-│ └── global.css # Global CSS styles
-├── Components/
-│ ├── HomePage/
-│ │ └── HomePage.tsx
-│ ├── Navigation/
-│ │ └── NavigationMain.tsx
-│ ├── Profiles/
-│ │ └── Profiles.tsx
-│ ├── Tables/
-│ │ └── Tables.tsx
-│ ├── Sakljucarstvo/
-│ │ └── Sakljucarstvo.tsx
-│ ├── Graphs/
-│ │ └── Graphs.tsx
-│ ├── Yearly/
-│ │ └── Yearly.tsx
-│ └── Help/
-│ │ └── Help.tsx
-├── stores/
-│ ├── employeesStore.ts # Zustand store for employees data
-│ ├── sakljucariStore.ts # Zustand store for sakljucari data
-│ ├── ekspozitureSakljucariStore.ts # Zustand store for ekspozitureSakljucari data
-│ ├── driversStore.ts # Zustand store for drivers data
-│ └── commissionsStore.ts # Zustand store for commissions data
-├── lib/
-│ └── supabaseClient.ts
-├── public/ # Static assets (images, fonts, etc.)
-├── .env.local # Environment variables
-├── next.config.js # Next.js configuration
-├── package.json # Project dependencies
-├── README.md # Project description
-└── tsconfig.json # TypeScript configuration
+my-app/
+├── src/
+│ ├── app/
+│ │ ├── layout.tsx # Root layout
+│ │ ├── page.tsx # Landing page (static)
+│ │ ├── (auth)/ # Route Group for Authentication
+│ │ │ ├── login/
+│ │ │ │ └── page.tsx # Login page
+│ │ │ ├── signup/
+│ │ │ │ └── page.tsx # Signup page
+│ │ ├── main/
+│ │ │ ├── page.tsx # Main page (conditional rendering)
+│ │ │ ├── components/ # Components for main page
+│ │ │ │ ├── HomePage.tsx
+│ │ │ │ ├── Tables/
+│ │ │ │ │ ├── Tables.tsx # Tables main page component
+│ │ │ │ │ ├── Table1.tsx # Table 1 Component
+│ │ │ │ │ ├── Table2.tsx # Table 2 Component
+│ │ │ │ │ ├── Table3.tsx # Table 3 Component
+│ │ │ │ │ ├── Table4.tsx # Table 4 Component
+│ │ │ │ │ ├── Table5.tsx # Table 5 Component
+│ │ │ │ │ ├── Table6.tsx # Table 6 Component
+│ │ │ │ │ ├── Table7.tsx # Table 7 Component
+│ │ │ │ │ └── Table8.tsx # Table 8 Component
+│ │ │ │ ├── Profiles.tsx
+│ │ │ │ ├── Graphs/ # Grouping graph components
+│ │ │ │ │ ├── Graph1.tsx # First Graph
+│ │ │ │ │ └── Graph2.tsx # Second Graph
+│ │ │ │ ├── Sakljucarstvo.tsx
+│ │ │ │ ├── Yearly.tsx
+│ │ │ │ ├── Help.tsx
+│ │ │ │ ├── navigation/ # New Navigation directory
+│ │ │ │ │ ├── MainNavigation.tsx # Navigation for main page
+│ │ │ │ │ └── TableNavigation.tsx # Navigation for tables
+│ │ │ │ ├── Authentication/ # New Authentication directory
+│ │ │ │ │ ├── LoginForm.tsx # Login Form Component
+│ │ │ │ │ └── SignupForm.tsx # Signup Form Component
+│ │ ├── styles/ # Styles specific to app
+│ │ │ ├── globals.css
+│ │ │ └── main.module.css # Example CSS Module
+│ ├── classes/ # New Classes directory
+│ │ ├── User.ts # Example User Class
+│ │ ├── TableData.ts # Example Table Data Class
+│ ├── lib/ # Reusable code modules
+│ │ ├── api.ts # API client functions (using React Query)
+│ │ ├── auth.ts # Authentication related functions
+│ │ ├── data-fetching.ts # Configuration of React Query
+│ │ └── react-query.ts # React Query setup (client, provider)
+│ ├── stores/ # State management (e.g., Zustand)
+│ │ ├── main-store.ts # Zustand store for main page state
+│ │ └── table-store.ts # Zustand store for table state
+│ ├── utils/ # Utility functions
+│ │ ├── formatters.ts # Formatting functions (dates, numbers)
+│ │ ├── helpers.ts # General helper functions
+│ │ └── validators.ts # Validation functions
+├── public/
+│ └── ...
+├── next.config.js
+├── package.json
+├── tsconfig.json
+└── .gitignore
