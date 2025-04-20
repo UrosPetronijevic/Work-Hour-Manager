@@ -1,3 +1,3 @@
 export default function TableDodatnoOpt() {
-  return <div>TableDodatnoOpt</div>;
+  return <div className="h-screen gold-striped">TableDodatnoOpt</div>;
 }

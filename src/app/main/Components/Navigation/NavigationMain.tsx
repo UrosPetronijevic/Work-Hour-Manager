@@ -10,7 +10,7 @@ const NavigationMain = () => {
 
   return (
     <nav>
-      <ul className="grid grid-cols-8 py-4 cursor-pointer rouded-md place-items-center">
+      <ul className="grid grid-cols-8 py-4 cursor-pointer rouded-md place-items-center bg-gradient-to-b from-slate-700 from- to-slate-600 to- text-[#E8B248ff]">
         <li onClick={() => {}} className="bg-blue-200">
           Dodaj
         </li>

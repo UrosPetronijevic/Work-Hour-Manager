@@ -18,7 +18,6 @@ export class Employee {
   pp: boolean = false;
 
   pripravnost: boolean = false;
-  prevoz: boolean = false;
 
   fondSati: number = 0;
   redovanRad: number = 0;
@@ -27,20 +26,26 @@ export class Employee {
   placenoOdsustvo: number = 0;
   bolovanje30: number = 0;
   bolovanje100: number = 0;
-  bolovanjeNaTertFonda: number = 0;
+  bolovanjeNaTeretFonda: number = 0;
   porodiljskoOdsustvo: number = 0;
 
   godisnjiOdmorArr: number[] = [];
   placenoOdsustvoArr: number[] = [];
   bolovanje30Arr: number[] = [];
   bolovanje100Arr: number[] = [];
-  bolovanjeNaTertFondaArr: number[] = [];
+  bolovanjeNaTeretFondaArr: number[] = [];
+  porodiljskoOdsustvoArr: number[] = [];
   slavaArr: number[] = [];
-
-  selectedDaysArr: number[] = [];
 
   pripravnostSatiArr: (number | string | null)[] = [];
   pripravnostTotal: number = 0;
+
+  selectedDaysArr: number[] = [];
+
+  //SPECIAL CLASSES
+  year_name: number = 0;
+  month_name: string = "";
+  filijala_name: string = "";
 
   constructor(
     ime: string,
@@ -55,8 +60,7 @@ export class Employee {
     zadruga: boolean,
     pp: boolean,
 
-    pripravnost: boolean,
-    prevoz: boolean
+    pripravnost: boolean
   ) {
     this.imeZaposlenog = ime;
     this.prezimeZaposlenog = prezime;
@@ -71,7 +75,6 @@ export class Employee {
     this.pp = pp;
 
     this.pripravnost = pripravnost;
-    this.prevoz = prevoz;
 
     this.fondSati = calculateWorkingHours();
 
@@ -118,7 +121,7 @@ export class Employee {
     this.placenoOdsustvo = this.placenoOdsustvoArr.length * 8;
     this.bolovanje30 = this.bolovanje30Arr.length * 8;
     this.bolovanje100 = this.bolovanje100Arr.length * 8;
-    this.bolovanjeNaTertFonda = this.bolovanjeNaTertFondaArr.length * 8;
+    this.bolovanjeNaTeretFonda = this.bolovanjeNaTeretFondaArr.length * 8;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
