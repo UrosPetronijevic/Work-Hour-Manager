@@ -38,7 +38,7 @@ export default function TablesPage() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col gap-2 p-8">
+    <div className="w-full h-full flex flex-col gap-2">
       <NavigationTable setItemSelected={setSelectedValue} />
       {renderComponent()}
     </div>

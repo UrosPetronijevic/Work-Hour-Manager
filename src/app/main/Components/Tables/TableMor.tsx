@@ -28,14 +28,14 @@ export default function TableMor({ mor }: TableMorProps) {
     employee = employees[0];
   }
   return (
-    <div>
-      <table className="table-auto border-collapse border border-gray-300 w-full">
+    <div className="text-slate-500">
+      <table className="table-auto border-collapse w-full">
         <thead>
           <tr>
             {columns.map((column, colIndex) => (
               <th
                 key={`header-${colIndex}`}
-                className="border border-gray-300 px-4 py-2 bg-gray-100"
+                className="border border-[#E8B248ff] px-4 py-2 bg-slate-300/30"
               >
                 {column}
               </th>
@@ -45,46 +45,46 @@ export default function TableMor({ mor }: TableMorProps) {
         <tbody>
           {employees?.map((employee, rowIndex) => (
             <tr key={`rowMor-${rowIndex}`}>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.kadrovskiBroj}
               </td>
               <td
-                className="border border-gray-300 px-4 py-2"
+                className="border border-[#E8B248ff] px-4 py-2"
                 onClick={() => {}}
               >
                 {employee.imeZaposlenog} {employee.prezimeZaposlenog}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.fondSati}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {datumPocetka.toLocaleDateString()}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {datumZavrsetka.toLocaleDateString()}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.redovanRad}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.godisnjiOdmor}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {drzavniVerskiPraznik}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.placenoOdsustvo}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.bolovanje30}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.bolovanje100}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.bolovanjeNaTertFonda}
               </td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-[#E8B248ff] px-4 py-2">
                 {employee.porodiljskoOdsustvo}
               </td>
             </tr>

@@ -8,6 +8,11 @@ import HomePage from "./Components/HomePage";
 import TablesPage from "./Components/Tables/TablesPage";
 import NavigationMain from "./Components/Navigation/NavigationMain";
 import { formatDateToDots, today } from "@/Classes/Dates";
+import Profiles from "./Components/Profiles";
+import Sakljucarstvo from "./Components/Sakljucarstvo";
+import Graphs from "./Components/Graphs/Graphs";
+import Yearly from "./Components/Yearly";
+import Help from "./Components/Help";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,8 +29,18 @@ export default function MainPage() {
     switch (activeComponent) {
       case "home":
         return <HomePage />;
+      case "profiles":
+        return <Profiles />;
       case "tables":
         return <TablesPage />;
+      case "sakljucarstvo":
+        return <Sakljucarstvo />;
+      case "graphs":
+        return <Graphs />;
+      case "yearly":
+        return <Yearly />;
+      case "help":
+        return <Help />;
       default:
         return <HomePage />;
     }
@@ -33,13 +48,13 @@ export default function MainPage() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex justify-between p-4 text-2xl">
-        <span className="text-amber-300">{formatDateToDots(today)}</span>
-        <span className="text-amber-700">username</span>
+      <div className="flex justify-between p-4 text-2xl gold-striped-lighter font-bold">
+        <span className="text-slate-600">{formatDateToDots(today)}</span>
+        <span className="text-slate-600">username</span>
       </div>
       <NavigationMain />
       <ReactQueryDevtools initialIsOpen={false} />
-      <div className="max-w-screen">{renderComponent()}</div>
+      <div className="max-w-screen p-4">{renderComponent()}</div>
     </QueryClientProvider>
   );
 }

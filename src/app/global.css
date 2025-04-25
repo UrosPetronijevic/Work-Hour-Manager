@@ -30,60 +30,56 @@
   background-size: 200% 100%; /* Adjust for stripe width */
 }
 
-.gold-twill {
+.gold-striped-warmer {
   background: linear-gradient(
-    45deg,
-    #cf9a39 25%,
-    #f3c255 25%,
-    #f3c255 50%,
-    #f3d162 50%,
-    #f3d162 75%,
-    #f8e06e 75%,
-    #f8e06e 100%
+    90deg,
+    hsl(32, 65%, 51%) 0%,
+    /* Warmer */ hsl(32, 88%, 65%) 10%,
+    /* Warmer */ hsl(34, 89%, 67%) 20%,
+    /* Warmer */ hsl(36, 97%, 70%) 30%,
+    /* Warmer */ hsl(29, 82%, 60%) 40%,
+    /* Warmer */ hsl(27, 78%, 55%) 50%,
+    /* Warmer */ hsl(25, 72%, 48%) 60%,
+    /* Warmer */ hsl(27, 77%, 54%) 70%,
+    /* Warmer */ hsl(23, 74%, 45%) 80%,
+    /* Warmer */ hsl(25, 69%, 49%) 90%,
+    /* Warmer */ hsl(32, 65%, 51%) 100% /* Warmer */
   );
-  background-size: 20px 20px; /* Adjust for pattern size */
+  background-size: 200% 100%;
 }
 
-.gold-rough {
-  background-image: linear-gradient(
-      rgba(207, 154, 57, 0.2) 20%,
-      transparent 20%
-    ),
-    linear-gradient(90deg, rgba(243, 194, 85, 0.2) 20%, transparent 20%),
-    linear-gradient(rgba(243, 209, 98, 0.2) 40%, transparent 40%),
-    linear-gradient(90deg, rgba(248, 224, 110, 0.2) 40%, transparent 40%),
-    linear-gradient(rgba(232, 178, 72, 0.2) 60%, transparent 60%),
-    linear-gradient(90deg, rgba(218, 164, 62, 0.2) 60%, transparent 60%),
-    linear-gradient(rgba(197, 142, 48, 0.2) 80%, transparent 80%),
-    linear-gradient(90deg, rgba(211, 161, 62, 0.2) 80%, transparent 80%),
-    linear-gradient(rgba(188, 134, 44, 0.2), transparent),
-    linear-gradient(90deg, rgba(196, 144, 51, 0.2), transparent);
-  background-size: 10px 10px;
-}
-
-.gold-metallic {
+.gold-striped-lighter {
   background: linear-gradient(
-      to bottom,
-      rgba(207, 154, 57, 1) 0%,
-      rgba(243, 194, 85, 1) 20%,
-      rgba(243, 209, 98, 1) 30%,
-      rgba(248, 224, 110, 1) 40%,
-      rgba(232, 178, 72, 1) 50%,
-      rgba(218, 164, 62, 1) 60%,
-      rgba(197, 142, 48, 1) 70%,
-      rgba(211, 161, 62, 1) 80%,
-      rgba(188, 134, 44, 1) 90%,
-      rgba(196, 144, 51, 1) 100%
-    ),
-    linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(0, 0, 0, 0.1) 100%
-    ); /* Subtle highlight */
-  background-blend-mode: overlay; /* Important for mixing the gradients */
+    90deg,
+    #dfb359 0%,
+    /* Lighter */ #f7d57a 10%,
+    /* Lighter */ #f7e187 20%,
+    /* Lighter */ #fde793 30%,
+    /* Lighter */ #edc36d 40%,
+    /* Lighter */ #e4b863 50%,
+    /* Lighter */ #d5a355 60%,
+    /* Lighter */ #e3b964 70%,
+    /* Lighter */ #ce9b4a 80%,
+    /* Lighter */ #d4a858 90%,
+    /* Lighter */ #dfb359 100% /* Lighter */
+  );
+  background-size: 200% 100%;
+}
+
+.gold-striped-colder {
+  background: linear-gradient(
+    90deg,
+    hsl(52, 45%, 51%) 0%,
+    /* Colder */ hsl(52, 68%, 65%) 10%,
+    /* Colder */ hsl(54, 69%, 67%) 20%,
+    /* Colder */ hsl(56, 77%, 70%) 30%,
+    /* Colder */ hsl(49, 62%, 60%) 40%,
+    /* Colder */ hsl(47, 58%, 55%) 50%,
+    /* Colder */ hsl(45, 52%, 48%) 60%,
+    /* Colder */ hsl(47, 57%, 54%) 70%,
+    /* Colder */ hsl(43, 54%, 45%) 80%,
+    /* Colder */ hsl(45, 49%, 49%) 90%,
+    /* Colder */ hsl(52, 45%, 51%) 100% /* Colder */
+  );
+  background-size: 200% 100%;
 }

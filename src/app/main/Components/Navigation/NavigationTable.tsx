@@ -8,16 +8,13 @@ interface Props {
 }
 
 export default function NavigationTable({ setItemSelected }: Props) {
-  const [activeItem, setActiveItem] = useState<string | null>("Mor");
+  const [activeItem, setActiveItem] = useState<string | null>("Mor"); // Initial state is null
 
-  const handleMorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setActiveItem(e.target.value);
-    setItemSelected(e.target.value);
-  };
-
-  const handlePrevozChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setActiveItem(e.target.value);
-    setItemSelected(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    console.log("Select Changed:", selectedValue);
+    setActiveItem(selectedValue);
+    setItemSelected(selectedValue);
   };
 
   const handleItemClick = (value: string) => {
@@ -27,62 +24,74 @@ export default function NavigationTable({ setItemSelected }: Props) {
 
   return (
     <nav>
-      <ul className="grid grid-cols-5 cursor-pointer p-2 bg-gradient-to-b from-slate-600 from- to-slate-500 to- text-[#E8B248ff]">
+      <ul className="grid grid-cols-5 cursor-pointer p-2 bg-gradient-to-b from-slate-600 from- to-slate-500 to- text-[#E8B248ff] rounded-3xl">
         <li className="w-full">
           <select
-            onChange={handleMorChange}
+            onChange={handleChange}
             value={activeItem || ""}
             className={`w-full h-full text-center ${
               activeItem === "Mor" ||
               activeItem === "MorPP" ||
               activeItem === "MorZadruga"
-                ? "bg-[#E8B248ff] text-slate-700"
+                ? "gold-striped text-slate-700 rounded-2xl"
                 : ""
-            }`} // Apply styling if active
+            }`}
           >
-            <option>Mor</option>
-            <option>MorPP</option>
-            <option>MorZadruga</option>
+            <option value="" hidden>
+              Mor
+            </option>
+            <option value="Mor">Mor</option>
+            <option value="MorPP">MorPP</option>
+            <option value="MorZadruga">MorZadruga</option>
           </select>
         </li>
         <li
           onClick={() => handleItemClick("Pripravnost")}
           className={`p-2 w-full text-center ${
-            activeItem === "Pripravnost" ? "bg-[#E8B248ff] text-slate-700" : ""
-          }`} // Apply styling if active
+            activeItem === "Pripravnost"
+              ? "gold-striped text-slate-700 rounded-2xl"
+              : ""
+          }`}
         >
           Pripravnost
         </li>
         <li className="w-full">
           <select
-            onChange={handlePrevozChange}
+            onChange={handleChange}
             value={activeItem || ""}
             className={`w-full h-full text-center ${
               activeItem === "Prevoz 1" ||
               activeItem === "Prevoz 2" ||
               activeItem === "Prevoz 3"
-                ? "bg-[#E8B248ff] text-slate-700"
+                ? "gold-striped text-slate-700 rounded-2xl"
                 : ""
-            }`} // Apply styling if active
+            }`}
           >
-            <option>Prevoz 1</option>
-            <option>Prevoz 2</option>
-            <option>Prevoz 3</option>
+            <option value="" hidden>
+              Prevoz 1
+            </option>
+            <option value="Prevoz 1">Prevoz 1</option>
+            <option value="Prevoz 2">Prevoz 2</option>
+            <option value="Prevoz 3">Prevoz 3</option>
           </select>
         </li>
         <li
           onClick={() => handleItemClick("Dodatno opt.")}
           className={`p-2 w-full text-center ${
-            activeItem === "Dodatno opt." ? "gold-striped text-slate-700" : ""
-          }`} // Apply styling if active
+            activeItem === "Dodatno opt."
+              ? "gold-striped text-slate-700 rounded-2xl"
+              : ""
+          }`}
         >
           Dodatno opt.
         </li>
         <li
           onClick={() => handleItemClick("Prekovremeni")}
           className={`p-2 w-full text-center ${
-            activeItem === "Prekovremeni" ? "bg-[#E8B248ff] text-slate-700" : ""
-          }`} // Apply styling if active
+            activeItem === "Prekovremeni"
+              ? "gold-striped text-slate-700 rounded-2xl"
+              : ""
+          }`}
         >
           Prekovremeni
         </li>
