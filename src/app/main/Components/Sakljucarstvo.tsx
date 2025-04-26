@@ -3,9 +3,6 @@
 import { useState } from "react";
 import Filijala from "./Positions/Filijala";
 import Ekspoziture from "./Positions/Ekspoziture";
-import Prijem from "./Positions/Prijem";
-import Nbs from "./Positions/Nbs";
-import Vozaci from "./Positions/Vozaci";
 
 export default function Sakljucarstvo() {
   const [selected, setSelected] = useState("Filijala");
@@ -27,19 +24,19 @@ export default function Sakljucarstvo() {
   };
 
   return (
-    <div className="bg-slate-300/30 rounded-lg">
-      <div className="text-slate-700 p-4 flex flex-col gap-2">
-        <select
-          onChange={handleSelect}
-          value={selected}
-          className={`w-min text-white`}
-        >
-          <option value="" hidden></option>
-          <option value="Filijala">Filijala</option>
-          <option value="Ekspoziture">Ekspoziture</option>
-        </select>
+    <div className="bg-slate-500 rounded-lg p-4 flex flex-col gap-2 text-white">
+      <select
+        onChange={handleSelect}
+        value={selected}
+        className={`w-min text-amber-300 bg-transparent outline-none`}
+      >
+        <option value="" hidden></option>
+        <option value="Filijala">Filijala</option>
+        <option value="Ekspoziture">Ekspoziture</option>
+      </select>
 
-        <div>{renderComponent()}</div>
+      <div className="flex flex-col justify-center h-[70vh]">
+        {renderComponent()}
       </div>
     </div>
   );

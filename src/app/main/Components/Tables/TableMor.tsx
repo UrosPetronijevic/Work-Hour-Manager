@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getEmployees } from "@/lib/apiEmployees";
 import { Employee } from "@/Classes/Employee";
 import { columns } from "@/Classes/TableColumns";
 import { datumPocetka, datumZavrsetka } from "@/Classes/Dates";
 import { drzavniVerskiPraznik } from "@/Classes/PublicHolidays";
+import { useEmployeesData } from "@/lib/hooks/useEmployeesData";
+import Spinner from "../Reusable/Spinner/Spinner";
 
 // Components/Tables/TableMor.tsx
 interface TableMorProps {
@@ -11,22 +11,22 @@ interface TableMorProps {
 }
 
 export default function TableMor({ mor }: TableMorProps) {
-  const {
-    data: employees,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["employees"],
-    queryFn: getEmployees,
-  });
+  const { data: employees, isLoading, error } = useEmployeesData();
 
-  console.log(employees);
-
-  let employee: Employee | undefined;
-
-  if (employees) {
-    employee = employees[0];
+  // Handle loading and error states gracefully
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Spinner size="large" />
+      </div>
+    );
   }
+
+  if (error) {
+    // Provide more informative error message
+    return <div>Error fetching employees: {(error as Error).message}</div>;
+  }
+
   return (
     <div className="text-slate-500">
       <table className="table-auto border-collapse w-full">

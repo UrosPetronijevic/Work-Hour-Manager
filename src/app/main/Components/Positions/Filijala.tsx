@@ -4,7 +4,7 @@ import Vozaci from "./Vozaci";
 
 export default function Filijala() {
   return (
-    <div className="grid grid-cols-3 gap-4 text-slate-700">
+    <div className="grid grid-cols-3 gap-4">
       <div className="rounded-md backdrop-blur-[14px] border-[1px] border-white/40 shadow-xl flex flex-col p-4 h-full">
         <h3 className="text-center mb-3 text-2xl font-bold ">Gornje</h3>
         <ul className="flex flex-col gap-2 py-4 ml-10">

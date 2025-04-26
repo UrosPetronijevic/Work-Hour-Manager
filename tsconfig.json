@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/lib/supabase.js",
-    "src/lib/apiFilijale.js"
+    "src/lib/apiFilijale.js",
+    "src/lib/hooks/useEmployeesData.js"
   ],
   "exclude": ["node_modules"]
 }

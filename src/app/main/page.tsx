@@ -48,13 +48,15 @@ export default function MainPage() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex justify-between p-4 text-2xl gold-striped-lighter font-bold">
-        <span className="text-slate-600">{formatDateToDots(today)}</span>
-        <span className="text-slate-600">username</span>
+      <div className="min-h-screen flex flex-col">
+        <div className="flex justify-between p-4 text-2xl gold-striped-lighter font-bold">
+          <span className="text-slate-600">{formatDateToDots(today)}</span>
+          <span className="text-slate-600">username</span>
+        </div>
+        <NavigationMain />
+        <ReactQueryDevtools initialIsOpen={false} />
+        <div className="max-w-screen p-4">{renderComponent()}</div>
       </div>
-      <NavigationMain />
-      <ReactQueryDevtools initialIsOpen={false} />
-      <div className="max-w-screen p-4">{renderComponent()}</div>
     </QueryClientProvider>
   );
 }

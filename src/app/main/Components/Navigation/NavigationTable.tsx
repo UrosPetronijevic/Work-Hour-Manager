@@ -29,7 +29,7 @@ export default function NavigationTable({ setItemSelected }: Props) {
           <select
             onChange={handleChange}
             value={activeItem || ""}
-            className={`w-full h-full text-center ${
+            className={`w-full h-full text-center outline-none ${
               activeItem === "Mor" ||
               activeItem === "MorPP" ||
               activeItem === "MorZadruga"
@@ -59,7 +59,7 @@ export default function NavigationTable({ setItemSelected }: Props) {
           <select
             onChange={handleChange}
             value={activeItem || ""}
-            className={`w-full h-full text-center ${
+            className={`w-full h-full text-center outline-none ${
               activeItem === "Prevoz 1" ||
               activeItem === "Prevoz 2" ||
               activeItem === "Prevoz 3"
