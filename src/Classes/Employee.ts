@@ -7,10 +7,15 @@ import { calculateWorkingHours } from "./WorkHours";
 export class Employee {
   imeZaposlenog: string = "";
   prezimeZaposlenog: string = "";
+  jmbg: number | null = null;
   kadrovskiBroj: string = "";
 
   radniStaz: string = "";
   datumRodjenja: string = "";
+  nbs: boolean = false;
+  deca: boolean = false;
+  radnoMesto: string = "";
+  slava: boolean = false;
 
   zaposleniNaOdredjeno: boolean = false;
   zaposleniNaNeodredjeno: boolean = false;
@@ -50,10 +55,15 @@ export class Employee {
   constructor(
     ime: string,
     prezime: string,
+    jmbg: number,
     kadrovskiBroj: string,
 
     radniStaz: string,
     datumRodjenja: string,
+    nbs: boolean,
+    deca: boolean,
+    radnoMesto: string,
+    slava: boolean,
 
     odredjeno: boolean,
     neodredjeno: boolean,
@@ -64,10 +74,15 @@ export class Employee {
   ) {
     this.imeZaposlenog = ime;
     this.prezimeZaposlenog = prezime;
+    this.jmbg = jmbg;
     this.kadrovskiBroj = kadrovskiBroj;
 
     this.radniStaz = radniStaz;
     this.datumRodjenja = datumRodjenja;
+    this.nbs = nbs;
+    this.deca = deca;
+    this.radnoMesto = radnoMesto;
+    this.slava = slava;
 
     this.zaposleniNaOdredjeno = odredjeno;
     this.zaposleniNaNeodredjeno = neodredjeno;

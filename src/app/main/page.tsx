@@ -13,6 +13,8 @@ import Sakljucarstvo from "./Components/Sakljucarstvo";
 import Graphs from "./Components/Graphs/Graphs";
 import Yearly from "./Components/Yearly";
 import Help from "./Components/Help";
+import { useState } from "react";
+import Profile from "./Components/Profile";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +26,8 @@ const queryClient = new QueryClient({
 
 export default function MainPage() {
   const activeComponent = useNavigationStore((state) => state.activeComponent);
+
+  const [profile, setProfile] = useState(true);
 
   const renderComponent = () => {
     switch (activeComponent) {
@@ -48,7 +52,7 @@ export default function MainPage() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col relative">
         <div className="flex justify-between p-4 text-2xl gold-striped-lighter font-bold">
           <span className="text-slate-600">{formatDateToDots(today)}</span>
           <span className="text-slate-600">username</span>
@@ -56,6 +60,8 @@ export default function MainPage() {
         <NavigationMain />
         <ReactQueryDevtools initialIsOpen={false} />
         <div className="max-w-screen p-4">{renderComponent()}</div>
+
+        {profile && <Profile />}
       </div>
     </QueryClientProvider>
   );
