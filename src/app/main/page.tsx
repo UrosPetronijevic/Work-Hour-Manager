@@ -15,6 +15,7 @@ import Yearly from "./Components/Yearly";
 import Help from "./Components/Help";
 import { useState } from "react";
 import Profile from "./Components/Profile";
+import FormPage from "./Components/Form/FormPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +28,8 @@ const queryClient = new QueryClient({
 export default function MainPage() {
   const activeComponent = useNavigationStore((state) => state.activeComponent);
 
-  const [profile, setProfile] = useState(true);
+  const [profile, setProfile] = useState(false);
+  const [form, setForm] = useState(true);
 
   const renderComponent = () => {
     switch (activeComponent) {
@@ -62,6 +64,7 @@ export default function MainPage() {
         <div className="max-w-screen p-4">{renderComponent()}</div>
 
         {profile && <Profile />}
+        {form && <FormPage />}
       </div>
     </QueryClientProvider>
   );
