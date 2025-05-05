@@ -4,7 +4,11 @@
 import { useState } from "react";
 import { useNavigationStore } from "@/stores/navigationStore";
 
-const NavigationMain = () => {
+type NavigationMainProps = {
+  setForm: (value: boolean) => void; // Add the setPopUp function here
+};
+
+const NavigationMain = ({ setForm }: NavigationMainProps) => {
   const setActiveComponent = useNavigationStore(
     (state) => state.setActiveComponent
   );
@@ -19,7 +23,9 @@ const NavigationMain = () => {
     <nav>
       <ul className="grid grid-cols-8 cursor-pointer rouded-md place-items-center bg-gradient-to-b from-slate-700 from- to-slate-600 to- text-[#E8B248ff]">
         <li
-          onClick={() => {}}
+          onClick={() => {
+            setForm(true);
+          }}
           className="w-full flex justify-center items-center"
         >
           <span className="py-1 w-3/5 text-center border border-sky-300 text-sky-300">

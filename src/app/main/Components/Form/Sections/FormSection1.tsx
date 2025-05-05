@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import FormPopup from "../FormPopup";
+import { Deca } from "@/Classes/Deca";
 
 export default function FormSection1() {
   const [ime, setIme] = useState<string>("");
@@ -18,6 +19,8 @@ export default function FormSection1() {
   const [popUp, setPopUp] = useState<boolean>(false);
 
   const [err, setErr] = useState<boolean>(false);
+
+  const [decaArr, setDecaArr] = useState<Deca[]>([]);
 
   const handleCheckValue = (input: number) => {
     if (input < 0 || input > 10) {
@@ -59,9 +62,9 @@ export default function FormSection1() {
   // if (brojDece) console.log(true);
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 px-4">
       <label className="flex gap-2 flex-col">
-        <span>Ime:</span>
+        <span className="select-none">Ime:</span>
         <input
           placeholder="Petar"
           type="text"
@@ -74,7 +77,7 @@ export default function FormSection1() {
       </label>
 
       <label className="flex gap-2 flex-col">
-        <span>Prezime:</span>
+        <span className="select-none">Prezime:</span>
         <input
           placeholder="Petrovic"
           type="text"
@@ -87,7 +90,7 @@ export default function FormSection1() {
       </label>
 
       <label className="flex gap-2 flex-col">
-        <span>Datum rodjenja:</span>
+        <span className="select-none">Datum rodjenja:</span>
         <input
           placeholder="02.02.2025"
           type="text"
@@ -100,7 +103,7 @@ export default function FormSection1() {
       </label>
 
       <label className="flex gap-2 flex-col">
-        <span>JMBG:</span>
+        <span className="select-none">JMBG:</span>
         <input
           placeholder="0220130295321"
           type="text"
@@ -112,22 +115,27 @@ export default function FormSection1() {
         />
       </label>
 
-      <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
-          <span>Deca</span>
+      <div className="flex flex-col gap-4 ">
+        <label className="flex gap-2 items-center cursor-pointer w-min">
+          <span className="select-none">Deca</span>
           <input
+            className="cursor-pointer w-5 h-5"
             type="checkbox"
             onChange={() => {
               setDeca((e) => !e);
             }}
           />
-        </div>
+        </label>
+
         <label
           className={`flex gap-2 flex-col ${
             deca ? "" : "opacity-0 pointer-events-none"
           }`}
         >
-          <select onChange={(e) => handleDeca(e.target.value)}>
+          <select
+            onChange={(e) => handleDeca(e.target.value)}
+            className="w-1/2 outline-none cursor-pointer"
+          >
             <option value="" hidden>
               Jedno Dete
             </option>
@@ -138,16 +146,19 @@ export default function FormSection1() {
           </select>
         </label>
 
-        <input
-          type="number"
-          placeholder="max 10"
-          className={`${
-            odrediBroj && deca ? "" : "opacity-0 pointer-events-none"
-          } p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300`}
-          onChange={(e) => {
-            handleCheckValue(Number(e.target.value));
-          }}
-        />
+        <label>
+          <input
+            type="number"
+            placeholder="max 10"
+            className={`${
+              odrediBroj && deca ? "" : "opacity-0 pointer-events-none"
+            } p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300`}
+            onChange={(e) => {
+              handleCheckValue(Number(e.target.value));
+            }}
+            max={10}
+          />
+        </label>
       </div>
 
       <button
@@ -155,7 +166,7 @@ export default function FormSection1() {
           !err && odrediBroj && brojDece && deca
             ? ""
             : "opacity-0 pointer-events-none"
-        }`}
+        } gold-striped-lighter text-slate-700 py-2 px-4 w-max self-center rounded-md shadow-md`}
         onClick={(e) => {
           e.preventDefault();
           setPopUp(true);
@@ -164,7 +175,13 @@ export default function FormSection1() {
         Potvrdi broj dece
       </button>
 
-      {popUp && <FormPopup brojDece={brojDece} />}
+      {popUp && (
+        <FormPopup
+          brojDece={brojDece}
+          setPopUp={setPopUp}
+          setDecaArr={setDecaArr}
+        />
+      )}
     </div>
   );
 }

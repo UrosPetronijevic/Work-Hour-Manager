@@ -59,12 +59,12 @@ export default function MainPage() {
           <span className="text-slate-600">{formatDateToDots(today)}</span>
           <span className="text-slate-600">username</span>
         </div>
-        <NavigationMain />
+        <NavigationMain setForm={setForm} />
         <ReactQueryDevtools initialIsOpen={false} />
         <div className="max-w-screen p-4">{renderComponent()}</div>
 
         {profile && <Profile />}
-        {form && <FormPage />}
+        {form && <FormPage setForm={setForm} />}
       </div>
     </QueryClientProvider>
   );
