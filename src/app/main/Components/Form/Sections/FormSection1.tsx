@@ -62,7 +62,7 @@ export default function FormSection1() {
   // if (brojDece) console.log(true);
 
   return (
-    <div className="flex flex-col gap-10 px-4">
+    <div className="flex flex-col gap-6 px-4">
       <label className="flex gap-2 flex-col">
         <span className="select-none">Ime:</span>
         <input
@@ -106,6 +106,20 @@ export default function FormSection1() {
         <span className="select-none">JMBG:</span>
         <input
           placeholder="0220130295321"
+          type="text"
+          className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
+          value={jmbg}
+          onChange={(e) => {
+            setJmbg(e.target.value);
+          }}
+        />
+      </label>
+
+      {/* ovo zavrsiti sutra */}
+      <label className="flex gap-2 flex-col">
+        <span className="select-none">Slava:</span>
+        <input
+          placeholder="Nikola Sv"
           type="text"
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
           value={jmbg}

@@ -1,0 +1,751 @@
+const bubbleSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+};
+
+const selectionSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement selection sort logic here
+  return arr;
+};
+
+const insertionSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement insertion sort logic here
+  return arr;
+};
+
+const mergeSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement merge sort logic here
+  return arr;
+};
+
+const quickSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement quicksort logic here
+  return arr;
+};
+
+const heapSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement heap sort logic here
+  return arr;
+};
+
+const radixSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement radix sort logic here
+  return arr;
+};
+
+const countingSort = (arr: number[]): number[] => {
+  // Implementation
+  return arr;
+  // Implement counting sort logic here
+  return arr;
+};
+
+type SortAlgorithm = (arr: number[]) => number[];
+
+const algorithms: SortAlgorithm[] = [
+  bubbleSort,
+  selectionSort,
+  insertionSort,
+  mergeSort,
+  quickSort,
+  heapSort,
+  radixSort,
+  countingSort,
+];
+
+export const randomAlgorithm = (arr: number[]): number[] => {
+  const randomIndex = Math.floor(Math.random() * algorithms.length);
+  const algorithm = algorithms[randomIndex];
+  return algorithm(arr);
+};
+
+///////////////////////////////////////////////
+
+export type Nums = {
+  godisnjiOdmor: number;
+  placenoOdsustvo: number;
+  bolovanje30: number;
+  bolovanje100: number;
+  bolovanjeNaTeretFonda: number;
+  porodiljskoOdsustvo: number;
+  slava: number;
+  userName: string;
+};
+
+export const rawNumsArray: Nums[] = [
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 3,
+    bolovanje30: 2,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 5,
+    porodiljskoOdsustvo: 0,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 5,
+    placenoOdsustvo: 1,
+    bolovanje30: 3,
+    bolovanje100: 2,
+    bolovanjeNaTeretFonda: 4,
+    porodiljskoOdsustvo: 1,
+    slava: 3,
+    userName: "Uki Puki",
+  },
+  {
+    godisnjiOdmor: 0,
+    placenoOdsustvo: 5,
+    bolovanje30: 1,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 2,
+    porodiljskoOdsustvo: 4,
+    slava: 2,
+    userName: "Kuki Tuki",
+  },
+  {
+    godisnjiOdmor: 3,
+    placenoOdsustvo: 2,
+    bolovanje30: 0,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 3,
+    porodiljskoOdsustvo: 5,
+    slava: 4,
+    userName: "Loka Loka",
+  },
+  {
+    godisnjiOdmor: 1,
+    placenoOdsustvo: 4,
+    bolovanje30: 2,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 2,
+    slava: 3,
+    userName: "Doka Oka",
+  },
+  {
+    godisnjiOdmor: 4,
+    placenoOdsustvo: 0,
+    bolovanje30: 3,
+    bolovanje100: 2,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 3,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 3,
+    bolovanje30: 1,
+    bolovanje100: 4,
+    bolovanjeNaTeretFonda: 2,
+    porodiljskoOdsustvo: 0,
+    slava: 5,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 0,
+    placenoOdsustvo: 2,
+    bolovanje30: 4,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 3,
+    porodiljskoOdsustvo: 5,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 3,
+    placenoOdsustvo: 0,
+    bolovanje30: 2,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 2,
+    slava: 3,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 5,
+    placenoOdsustvo: 0,
+    bolovanje30: 3,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 2,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 3,
+    placenoOdsustvo: 0,
+    bolovanje30: 0,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 0,
+    slava: 4,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 1,
+    placenoOdsustvo: 0,
+    bolovanje30: 5,
+    bolovanje100: 2,
+    bolovanjeNaTeretFonda: 3,
+    porodiljskoOdsustvo: 1,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 4,
+    placenoOdsustvo: 3,
+    bolovanje30: 2,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 5,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 1,
+    bolovanje30: 3,
+    bolovanje100: 5,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 2,
+    slava: 3,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 0,
+    placenoOdsustvo: 4,
+    bolovanje30: 2,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 3,
+    porodiljskoOdsustvo: 0,
+    slava: 5,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 3,
+    placenoOdsustvo: 2,
+    bolovanje30: 1,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 4,
+    porodiljskoOdsustvo: 3,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 5,
+    placenoOdsustvo: 1,
+    bolovanje30: 0,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 2,
+    porodiljskoOdsustvo: 1,
+    slava: 4,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 0,
+    bolovanje30: 4,
+    bolovanje100: 2,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 3,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 1,
+    placenoOdsustvo: 3,
+    bolovanje30: 2,
+    bolovanje100: 5,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 4,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 4,
+    placenoOdsustvo: 2,
+    bolovanje30: 1,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 3,
+    porodiljskoOdsustvo: 2,
+    slava: 4,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 1,
+    bolovanje30: 4,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 1,
+    slava: 5,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 0,
+    placenoOdsustvo: 3,
+    bolovanje30: 2,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 4,
+    porodiljskoOdsustvo: 5,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 3,
+    placenoOdsustvo: 2,
+    bolovanje30: 0,
+    bolovanje100: 4,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 2,
+    slava: 3,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 5,
+    placenoOdsustvo: 1,
+    bolovanje30: 3,
+    bolovanje100: 2,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 4,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 0,
+    bolovanje30: 4,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 3,
+    porodiljskoOdsustvo: 2,
+    slava: 3,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 1,
+    placenoOdsustvo: 3,
+    bolovanje30: 2,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 5,
+    porodiljskoOdsustvo: 1,
+    slava: 4,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 4,
+    placenoOdsustvo: 2,
+    bolovanje30: 0,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 5,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 1,
+    bolovanje30: 3,
+    bolovanje100: 2,
+    bolovanjeNaTeretFonda: 4,
+    porodiljskoOdsustvo: 0,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 0,
+    placenoOdsustvo: 3,
+    bolovanje30: 1,
+    bolovanje100: 5,
+    bolovanjeNaTeretFonda: 2,
+    porodiljskoOdsustvo: 3,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 3,
+    placenoOdsustvo: 0,
+    bolovanje30: 2,
+    bolovanje100: 1,
+    bolovanjeNaTeretFonda: 4,
+    porodiljskoOdsustvo: 2,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 5,
+    placenoOdsustvo: 2,
+    bolovanje30: 0,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 2,
+    placenoOdsustvo: 4,
+    bolovanje30: 3,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 1,
+    porodiljskoOdsustvo: 2,
+    slava: 3,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 1,
+    placenoOdsustvo: 2,
+    bolovanje30: 0,
+    bolovanje100: 3,
+    bolovanjeNaTeretFonda: 4,
+    porodiljskoOdsustvo: 5,
+    slava: 1,
+    userName: "John Doe",
+  },
+];
+
+export const rawNumsArrayYearly: Nums[] = [
+  {
+    godisnjiOdmor: 65,
+    placenoOdsustvo: 30,
+    bolovanje30: 20,
+    bolovanje100: 10,
+    bolovanjeNaTeretFonda: 5,
+    porodiljskoOdsustvo: 2,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 120,
+    placenoOdsustvo: 45,
+    bolovanje30: 30,
+    bolovanje100: 25,
+    bolovanjeNaTeretFonda: 15,
+    porodiljskoOdsustvo: 5,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 200,
+    placenoOdsustvo: 50,
+    bolovanje30: 30,
+    bolovanje100: 20,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 3,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 80,
+    bolovanje30: 60,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 5,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 30,
+    placenoOdsustvo: 70,
+    bolovanje30: 90,
+    bolovanje100: 50,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 150,
+    placenoOdsustvo: 60,
+    bolovanje30: 40,
+    bolovanje100: 30,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 2,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 180,
+    placenoOdsustvo: 50,
+    bolovanje30: 40,
+    bolovanje100: 30,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 4,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 70,
+    bolovanje30: 60,
+    bolovanje100: 50,
+    bolovanjeNaTeretFonda: 40,
+    porodiljskoOdsustvo: 5,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 40,
+    placenoOdsustvo: 50,
+    bolovanje30: 60,
+    bolovanje100: 70,
+    bolovanjeNaTeretFonda: 80,
+    porodiljskoOdsustvo: 3,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 130,
+    placenoOdsustvo: 40,
+    bolovanje30: 50,
+    bolovanje100: 60,
+    bolovanjeNaTeretFonda: 70,
+    porodiljskoOdsustvo: 0,
+    slava: 1,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 90,
+    placenoOdsustvo: 70,
+    bolovanje30: 50,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 30,
+    porodiljskoOdsustvo: 4,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 140,
+    placenoOdsustvo: 50,
+    bolovanje30: 30,
+    bolovanje100: 20,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 80,
+    bolovanje30: 60,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 2,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 20,
+    placenoOdsustvo: 40,
+    bolovanje30: 60,
+    bolovanje100: 80,
+    bolovanjeNaTeretFonda: 100,
+    porodiljskoOdsustvo: 1,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 120,
+    placenoOdsustvo: 50,
+    bolovanje30: 30,
+    bolovanje100: 20,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 50,
+    placenoOdsustvo: 70,
+    bolovanje30: 90,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 4,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 110,
+    placenoOdsustvo: 50,
+    bolovanje30: 40,
+    bolovanje100: 30,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 2,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 60,
+    placenoOdsustvo: 80,
+    bolovanje30: 50,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 30,
+    porodiljskoOdsustvo: 3,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 140,
+    placenoOdsustvo: 40,
+    bolovanje30: 30,
+    bolovanje100: 20,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 5,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 70,
+    bolovanje30: 60,
+    bolovanje100: 50,
+    bolovanjeNaTeretFonda: 40,
+    porodiljskoOdsustvo: 3,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 20,
+    placenoOdsustvo: 40,
+    bolovanje30: 60,
+    bolovanje100: 80,
+    bolovanjeNaTeretFonda: 100,
+    porodiljskoOdsustvo: 1,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 30,
+    bolovanje30: 60,
+    bolovanje100: 20,
+    bolovanjeNaTeretFonda: 40,
+    porodiljskoOdsustvo: 2,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 120,
+    placenoOdsustvo: 40,
+    bolovanje30: 30,
+    bolovanje100: 50,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 40,
+    placenoOdsustvo: 30,
+    bolovanje30: 50,
+    bolovanje100: 70,
+    bolovanjeNaTeretFonda: 90,
+    porodiljskoOdsustvo: 1,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 30,
+    bolovanje30: 50,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 140,
+    placenoOdsustvo: 30,
+    bolovanje30: 50,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 4,
+    slava: 2,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 50,
+    placenoOdsustvo: 60,
+    bolovanje30: 70,
+    bolovanje100: 80,
+    bolovanjeNaTeretFonda: 90,
+    porodiljskoOdsustvo: 4,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 100,
+    placenoOdsustvo: 30,
+    bolovanje30: 50,
+    bolovanje100: 40,
+    bolovanjeNaTeretFonda: 20,
+    porodiljskoOdsustvo: 3,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 55,
+    placenoOdsustvo: 0,
+    bolovanje30: 0,
+    bolovanje100: 55,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 0,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 5,
+    placenoOdsustvo: 0,
+    bolovanje30: 50,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 0,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 35,
+    placenoOdsustvo: 0,
+    bolovanje30: 0,
+    bolovanje100: 20,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 0,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 200,
+    placenoOdsustvo: 0,
+    bolovanje30: 0,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 10,
+    porodiljskoOdsustvo: 0,
+    slava: 0,
+    userName: "John Doe",
+  },
+  {
+    godisnjiOdmor: 365,
+    placenoOdsustvo: 0,
+    bolovanje30: 0,
+    bolovanje100: 0,
+    bolovanjeNaTeretFonda: 0,
+    porodiljskoOdsustvo: 0,
+    slava: 0,
+    userName: "John Doe",
+  },
+];

@@ -27,6 +27,8 @@ export class Employee {
   fondSati: number = 0;
   redovanRad: number = 0;
 
+  ukupanGodisnjiOdmor: number = 0;
+
   godisnjiOdmor: number = 0;
   placenoOdsustvo: number = 0;
   bolovanje30: number = 0;
@@ -70,24 +72,28 @@ export class Employee {
     zadruga: boolean,
     pp: boolean,
 
+    ukupanGodisnjiOdmor: number,
+
     pripravnost: boolean
   ) {
     this.imeZaposlenog = ime;
     this.prezimeZaposlenog = prezime;
-    this.jmbg = jmbg;
-    this.kadrovskiBroj = kadrovskiBroj;
-
-    this.radniStaz = radniStaz;
     this.datumRodjenja = datumRodjenja;
-    this.nbs = nbs;
-    this.deca = deca;
-    this.radnoMesto = radnoMesto;
+    this.jmbg = jmbg;
     this.slava = slava;
+    this.deca = deca;
+
+    this.kadrovskiBroj = kadrovskiBroj;
+    this.radniStaz = radniStaz;
+    this.radnoMesto = radnoMesto;
+    this.nbs = nbs;
 
     this.zaposleniNaOdredjeno = odredjeno;
     this.zaposleniNaNeodredjeno = neodredjeno;
     this.zaposleniPrekoZadruge = zadruga;
     this.pp = pp;
+
+    this.ukupanGodisnjiOdmor = ukupanGodisnjiOdmor;
 
     this.pripravnost = pripravnost;
 

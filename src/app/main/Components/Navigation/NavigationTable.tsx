@@ -72,7 +72,6 @@ export default function NavigationTable({ setItemSelected }: Props) {
             </option>
             <option value="Prevoz 1">Prevoz 1</option>
             <option value="Prevoz 2">Prevoz 2</option>
-            <option value="Prevoz 3">Prevoz 3</option>
           </select>
         </li>
         <li

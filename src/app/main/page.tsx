@@ -29,7 +29,7 @@ export default function MainPage() {
   const activeComponent = useNavigationStore((state) => state.activeComponent);
 
   const [profile, setProfile] = useState(false);
-  const [form, setForm] = useState(true);
+  const [form, setForm] = useState(false);
 
   const renderComponent = () => {
     switch (activeComponent) {

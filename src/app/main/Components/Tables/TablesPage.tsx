@@ -8,6 +8,8 @@ import { useState } from "react";
 import TablePrevoz from "./TablePrevoz";
 import TablePrekovremeni from "./TablePrekovremeni";
 import TablePripravnost from "./TablePripravnost";
+import TableMorPP from "./TableMorPP";
+import TableMorZadruga from "./TableMorZadruga";
 
 export default function TablesPage() {
   const [selectedValue, setSelectedValue] = useState<string | null>("Mor");
@@ -17,9 +19,9 @@ export default function TablesPage() {
       case "Mor":
         return <TableMor mor={selectedValue} />;
       case "MorPP":
-        return <TableMor mor={selectedValue} />;
+        return <TableMorPP mor={selectedValue} />;
       case "MorZadruga":
-        return <TableMor mor={selectedValue} />;
+        return <TableMorZadruga mor={selectedValue} />;
       case "Pripravnost":
         return <TablePripravnost />;
       case "Prevoz 1":

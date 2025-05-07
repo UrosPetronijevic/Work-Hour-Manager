@@ -11,6 +11,11 @@ export default function FormSection3() {
           <span className="select-none">Prekovremeni</span>
           <input className="cursor-pointer w-5 h-5" type="checkbox" />
         </label>
+
+        <label className="flex gap-2 cursor-pointer items-center">
+          <span className="select-none">Dodatno opt</span>
+          <input className="cursor-pointer w-5 h-5" type="checkbox" />
+        </label>
       </div>
 
       <h3 className="self-center text-2xl font-bold">Sakljucari</h3>
