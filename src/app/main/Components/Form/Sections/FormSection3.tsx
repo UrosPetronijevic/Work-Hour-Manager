@@ -1,6 +1,19 @@
+import useActiveSectionStore from "@/stores/activeSectionStore";
+
 export default function FormSection3() {
+  const { activeComponent, setActiveComponent } = useActiveSectionStore();
+
   return (
-    <div className="flex flex-col gap-10 px-4 bg-red-300">
+    <div
+      className={`flex flex-col gap-10 px-4 py-2 ${
+        activeComponent === "section-3"
+          ? "shadow-xl border-t border-slate-300 transition-all ease-in duration-300"
+          : ""
+      }`}
+      onClick={() => {
+        setActiveComponent("section-3");
+      }}
+    >
       <div className="grid grid-cols-2 place-items-center">
         <label className="flex gap-2 cursor-pointer items-center">
           <span className="select-none">Pripravnost</span>

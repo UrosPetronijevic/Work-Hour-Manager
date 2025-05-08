@@ -3,12 +3,14 @@
 import { useState } from "react";
 import FormPopup from "../FormPopup";
 import { Deca } from "@/Classes/Deca";
+import useActiveSectionStore from "@/stores/activeSectionStore";
 
 export default function FormSection1() {
   const [ime, setIme] = useState<string>("");
   const [prezime, setPrezime] = useState<string>("");
   const [datumRodjenja, setDatumRodjenja] = useState<string>("");
   const [jmbg, setJmbg] = useState<string>("");
+  const [slava, setSlava] = useState<string>("");
   const [deca, setDeca] = useState<boolean>(false);
 
   const [jednoDete, setJednoDete] = useState<boolean>(false);
@@ -21,6 +23,12 @@ export default function FormSection1() {
   const [err, setErr] = useState<boolean>(false);
 
   const [decaArr, setDecaArr] = useState<Deca[]>([]);
+
+  ////////////zustand
+
+  const { activeComponent, setActiveComponent } = useActiveSectionStore();
+
+  /////////////
 
   const handleCheckValue = (input: number) => {
     if (input < 0 || input > 10) {
@@ -62,7 +70,16 @@ export default function FormSection1() {
   // if (brojDece) console.log(true);
 
   return (
-    <div className="flex flex-col gap-6 px-4">
+    <div
+      className={`flex flex-col gap-6 px-4 py-2 ${
+        activeComponent === "section-1"
+          ? "shadow-xl border-t border-slate-300 transition-all ease-in duration-300"
+          : ""
+      } ${activeComponent === "section-3" ? "border-r border-slate-300" : ""}`}
+      onClick={() => {
+        setActiveComponent("section-1");
+      }}
+    >
       <label className="flex gap-2 flex-col">
         <span className="select-none">Ime:</span>
         <input
@@ -122,9 +139,9 @@ export default function FormSection1() {
           placeholder="Nikola Sv"
           type="text"
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
-          value={jmbg}
+          value={slava}
           onChange={(e) => {
-            setJmbg(e.target.value);
+            setSlava(e.target.value);
           }}
         />
       </label>
