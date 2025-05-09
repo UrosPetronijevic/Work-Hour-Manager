@@ -1,17 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import FormPopup from "../FormPopup";
-import { Deca } from "@/Classes/Deca";
 import useActiveSectionStore from "@/stores/activeSectionStore";
+import useSection1Store from "@/stores/FormStores/section1Store";
+import Section1Popup from "./Popups/Section1Popup";
+import IzmenaPodatakaDece from "./Popups/Izmena Podataka/IzmenaPodatakaDece";
 
 export default function FormSection1() {
-  const [ime, setIme] = useState<string>("");
-  const [prezime, setPrezime] = useState<string>("");
-  const [datumRodjenja, setDatumRodjenja] = useState<string>("");
-  const [jmbg, setJmbg] = useState<string>("");
-  const [slava, setSlava] = useState<string>("");
-  const [deca, setDeca] = useState<boolean>(false);
+  const { ime, prezime, datumRodjenja, jmbg, slava, decaArr, setFormData } =
+    useSection1Store();
+
+  const [decaCheckBox, setDecaCheckBox] = useState<boolean>(false);
+
+  const [izmeniBrojDece, setIzmeniBrojDece] = useState<boolean>(false);
+
+  const [izmeniPodatkePopup, setIzmeniPodatkePopup] = useState<boolean>(false);
 
   const [jednoDete, setJednoDete] = useState<boolean>(false);
   const [dvaDeteta, setDvaDeteta] = useState<boolean>(false);
@@ -22,22 +25,11 @@ export default function FormSection1() {
 
   const [err, setErr] = useState<boolean>(false);
 
-  const [decaArr, setDecaArr] = useState<Deca[]>([]);
-
   ////////////zustand
 
   const { activeComponent, setActiveComponent } = useActiveSectionStore();
 
   /////////////
-
-  const handleCheckValue = (input: number) => {
-    if (input < 0 || input > 10) {
-      setErr(true);
-    } else {
-      setErr(false);
-      setBrojDece(input);
-    }
-  };
 
   const handleDeca = (deca: string) => {
     setJednoDete(false);
@@ -67,7 +59,20 @@ export default function FormSection1() {
     }
   };
 
+  //////////////////////////
+
+  const handleCheckValue = (input: number) => {
+    if (input < 0 || input > 10) {
+      setErr(true);
+    } else {
+      setErr(false);
+      setBrojDece(input);
+    }
+  };
+
   // if (brojDece) console.log(true);
+
+  console.log(decaArr);
 
   return (
     <div
@@ -88,7 +93,7 @@ export default function FormSection1() {
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
           value={ime}
           onChange={(e) => {
-            setIme(e.target.value);
+            setFormData({ ime: e.target.value });
           }}
         />
       </label>
@@ -101,7 +106,7 @@ export default function FormSection1() {
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
           value={prezime}
           onChange={(e) => {
-            setPrezime(e.target.value);
+            setFormData({ prezime: e.target.value });
           }}
         />
       </label>
@@ -114,7 +119,7 @@ export default function FormSection1() {
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
           value={datumRodjenja}
           onChange={(e) => {
-            setDatumRodjenja(e.target.value);
+            setFormData({ datumRodjenja: e.target.value });
           }}
         />
       </label>
@@ -123,11 +128,11 @@ export default function FormSection1() {
         <span className="select-none">JMBG:</span>
         <input
           placeholder="0220130295321"
-          type="text"
+          type="number"
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
           value={jmbg}
           onChange={(e) => {
-            setJmbg(e.target.value);
+            setFormData({ jmbg: e.target.value });
           }}
         />
       </label>
@@ -141,26 +146,46 @@ export default function FormSection1() {
           className="p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300"
           value={slava}
           onChange={(e) => {
-            setSlava(e.target.value);
+            setFormData({ slava: e.target.value });
           }}
         />
       </label>
 
       <div className="flex flex-col gap-4 ">
-        <label className="flex gap-2 items-center cursor-pointer w-min">
+        <label
+          className={`flex gap-2 items-center cursor-pointer ${
+            izmeniBrojDece === true ? "w-full" : "w-min"
+          }`}
+        >
           <span className="select-none">Deca</span>
-          <input
-            className="cursor-pointer w-5 h-5"
-            type="checkbox"
-            onChange={() => {
-              setDeca((e) => !e);
-            }}
-          />
+          {izmeniBrojDece === false ? (
+            <input
+              className="cursor-pointer w-5 h-5"
+              type="checkbox"
+              checked={decaCheckBox} // Bind the checked state to the deca variable
+              onChange={() => {
+                setDecaCheckBox((prevDeca) => !prevDeca); // Toggle the deca state
+              }}
+            />
+          ) : (
+            <div className="flex w-full justify-between items-center">
+              <span>✅</span>
+              <button
+                className="py-1 px-2 bg-slate-300 rounded-md"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIzmeniPodatkePopup(true);
+                }}
+              >
+                Izmeni
+              </button>
+            </div>
+          )}
         </label>
 
         <label
           className={`flex gap-2 flex-col ${
-            deca ? "" : "opacity-0 pointer-events-none"
+            decaCheckBox ? "" : "opacity-0 pointer-events-none"
           }`}
         >
           <select
@@ -182,7 +207,7 @@ export default function FormSection1() {
             type="number"
             placeholder="max 10"
             className={`${
-              odrediBroj && deca ? "" : "opacity-0 pointer-events-none"
+              odrediBroj && decaCheckBox ? "" : "opacity-0 pointer-events-none"
             } p-1 border-b-2 border-slate-300 px-2 w-full focus:outline-none focus:border-blue-300`}
             onChange={(e) => {
               handleCheckValue(Number(e.target.value));
@@ -194,7 +219,7 @@ export default function FormSection1() {
 
       <button
         className={`${
-          !err && odrediBroj && brojDece && deca
+          !err && brojDece && decaCheckBox
             ? ""
             : "opacity-0 pointer-events-none"
         } gold-striped-lighter text-slate-700 py-2 px-4 w-max self-center rounded-md shadow-md`}
@@ -207,11 +232,16 @@ export default function FormSection1() {
       </button>
 
       {popUp && (
-        <FormPopup
+        <Section1Popup
           brojDece={brojDece}
           setPopUp={setPopUp}
-          setDecaArr={setDecaArr}
+          setDecaCheckBox={setDecaCheckBox}
+          setIzmeniBrojDece={setIzmeniBrojDece}
         />
+      )}
+
+      {izmeniPodatkePopup && (
+        <IzmenaPodatakaDece setIzmeniPodatkePopup={setIzmeniPodatkePopup} />
       )}
     </div>
   );

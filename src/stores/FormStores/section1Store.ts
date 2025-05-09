@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
-interface Dete {
+export type Dete = {
   ime: string;
   prezime: string;
   datumRodjenja: string;
-}
+};
 
 type Deca = Dete[];
 
@@ -12,9 +12,9 @@ interface Section1State {
   ime: string;
   prezime: string;
   datumRodjenja: string;
-  jmbg: number;
+  jmbg: string;
   slava: string;
-  deca: Deca;
+  decaArr: Deca;
   setFormData: (data: Partial<Section1State>) => void;
 }
 
@@ -22,9 +22,9 @@ const useSection1Store = create<Section1State>((set) => ({
   ime: "",
   prezime: "",
   datumRodjenja: "",
-  jmbg: 0,
+  jmbg: "",
   slava: "",
-  deca: [],
+  decaArr: [],
   setFormData: (data) => set(data),
 }));
 
