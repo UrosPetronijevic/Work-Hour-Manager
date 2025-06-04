@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+.gold-striped-lighter {
+  background: linear-gradient(
+    90deg,
+    #dfb359 0%,
+    /* Lighter */ #f7d57a 10%,
+    /* Lighter */ #f7e187 20%,
+    /* Lighter */ #fde793 30%,
+    /* Lighter */ #edc36d 40%,
+    /* Lighter */ #e4b863 50%,
+    /* Lighter */ #d5a355 60%,
+    /* Lighter */ #e3b964 70%,
+    /* Lighter */ #ce9b4a 80%,
+    /* Lighter */ #d4a858 90%,
+    /* Lighter */ #dfb359 100% /* Lighter */
+  );
+  background-size: 200% 100%;
+}
