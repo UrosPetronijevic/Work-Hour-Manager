@@ -8,13 +8,12 @@ export default function MainLayout({
 }>) {
   return (
     <div>
-      <header>
+      <header className="flex flex-col gap-1">
         <LogedinUserInfo />
+        <nav>
+          <NavigationMain />
+        </nav>
       </header>
-
-      <nav>
-        <NavigationMain />
-      </nav>
 
       <main>{children}</main>
     </div>

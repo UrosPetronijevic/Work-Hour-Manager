@@ -17,3 +17,21 @@
   );
   background-size: 200% 100%;
 }
+
+.gold-striped {
+  background: linear-gradient(
+    90deg,
+    #cf9a39 0%,
+    #f3c255 10%,
+    #f3d162 20%,
+    #f8e06e 30%,
+    #e8b248 40%,
+    #daa43e 50%,
+    #c58e30 60%,
+    #d3a13e 70%,
+    #bc862c 80%,
+    #c49033 90%,
+    #cf9a39 100%
+  );
+  background-size: 200% 100%; /* Adjust for stripe width */
+}
