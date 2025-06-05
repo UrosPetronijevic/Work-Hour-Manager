@@ -1,89 +1,57 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import MorDropDown from "../_table/MorDropDown";
+import PrevozDropDown from "../_table/PrevozDropDown";
 
 export default function TableNavigation() {
-  const [activeItem, setActiveItem] = useState<string | null>("Mor"); // Initial state is null
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setActiveItem(e.target.value);
-  };
-
-  const handleItemClick = (value: string) => {
-    setActiveItem(value);
-  };
+  const [morDropDown, setMorDropDown] = useState<boolean>(false);
+  const [prevozDropDown, setPrevozDropDown] = useState<boolean>(false);
 
   return (
-    <ul className="grid grid-cols-5 cursor-pointer p-2 bg-gradient-to-b from-slate-600 from- to-slate-500 to- text-[#E8B248ff] rounded-3xl">
-      <li className="w-full">
-        <select
-          onChange={handleChange}
-          value={activeItem || ""}
-          className={`w-full h-full text-center outline-none ${
-            activeItem === "Mor" ||
-            activeItem === "MorPP" ||
-            activeItem === "MorZadruga"
-              ? "gold-striped text-slate-700 rounded-2xl"
-              : ""
-          }`}
-        >
-          <option value="" hidden>
-            Mor
-          </option>
-          <option value="Mor">Mor</option>
-          <option value="MorPP">MorPP</option>
-          <option value="MorZadruga">MorZadruga</option>
-        </select>
-      </li>
-      <li
-        onClick={() => handleItemClick("Pripravnost")}
-        className={`p-2 w-full text-center ${
-          activeItem === "Pripravnost"
-            ? "gold-striped text-slate-700 rounded-2xl"
-            : ""
-        }`}
+    <ul
+      className="grid grid-cols-5 cursor-pointer bg-slate-600 text-[#E8B248ff] rounded-3xl"
+      onMouseLeave={() => {
+        setMorDropDown(false);
+      }}
+    >
+      <MorDropDown setMorDropDown={setMorDropDown} morDropDown={morDropDown} />
+
+      <Link
+        href="/main/tables/pripravnost"
+        className="flex justify-center items-center p-4 w-full h-full"
+        onMouseEnter={() => {
+          setMorDropDown(false);
+        }}
       >
         Pripravnost
-      </li>
-      <li className="w-full">
-        <select
-          onChange={handleChange}
-          value={activeItem || ""}
-          className={`w-full h-full text-center outline-none ${
-            activeItem === "Prevoz 1" ||
-            activeItem === "Prevoz 2" ||
-            activeItem === "Prevoz 3"
-              ? "gold-striped text-slate-700 rounded-2xl"
-              : ""
-          }`}
-        >
-          <option value="" hidden>
-            Prevoz 1
-          </option>
-          <option value="Prevoz 1">Prevoz 1</option>
-          <option value="Prevoz 2">Prevoz 2</option>
-        </select>
-      </li>
-      <li
-        onClick={() => handleItemClick("Dodatno opt.")}
-        className={`p-2 w-full text-center ${
-          activeItem === "Dodatno opt."
-            ? "gold-striped text-slate-700 rounded-2xl"
-            : ""
-        }`}
-      >
-        Dodatno opt.
-      </li>
-      <li
-        onClick={() => handleItemClick("Prekovremeni")}
-        className={`p-2 w-full text-center ${
-          activeItem === "Prekovremeni"
-            ? "gold-striped text-slate-700 rounded-2xl"
-            : ""
-        }`}
+      </Link>
+
+      <Link
+        href="/main/tables/prekovremeni"
+        className="flex justify-center items-center p-4 w-full h-full"
+        onMouseEnter={() => {
+          setMorDropDown(false);
+        }}
       >
         Prekovremeni
-      </li>
+      </Link>
+
+      <PrevozDropDown
+        prevozDropDown={prevozDropDown}
+        setPrevozDropDown={setPrevozDropDown}
+      />
+
+      <Link
+        href="/main/tables/dodatnoOpterecenje"
+        className="flex justify-center items-center p-4 w-full h-full"
+        onMouseEnter={() => {
+          setMorDropDown(false);
+        }}
+      >
+        Dodatno Opterecenje
+      </Link>
     </ul>
   );
 }

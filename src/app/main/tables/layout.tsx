@@ -6,8 +6,8 @@ export default function TableLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="py-2">
-      <nav className="py-2 px-4">
+    <div className="p-4">
+      <nav>
         <TableNavigation />
       </nav>
       <main>{children}</main>

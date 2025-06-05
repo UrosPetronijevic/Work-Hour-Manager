@@ -44,11 +44,20 @@ export default function NavigationMain() {
       {/* Tabele Link */}
       <li
         className={`${
-          pathname === "/main/tables" && "gold-striped-lighter text-slate-700"
+          pathname === "/main/tables/mor" ||
+          pathname === "/main/tables/morPP" ||
+          pathname === "/main/tables/morZadruga" ||
+          pathname === "/main/tables/pripravnost" ||
+          pathname === "/main/tables/prekovremeni" ||
+          pathname === "/main/tables/dodatnoOpterecenje" ||
+          pathname === "/main/tables/prevoz" ||
+          pathname === "/main/tables/prevozPP"
+            ? "gold-striped-lighter text-slate-700"
+            : ""
         } w-full`}
       >
         <Link
-          href="/main/tables"
+          href="/main/tables/mor"
           className="flex justify-center items-center py-4"
         >
           Tabele
