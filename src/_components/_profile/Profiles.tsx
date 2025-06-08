@@ -1,27 +1,20 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import SearchBar from "./SearchBar";
-import SearchCard from "./SearchCard";
+import SearchBar from "../_search/SearchBar";
+import SearchCard from "../_search/SearchCard";
+import { Person } from "@/_lib/_fetch/OdredjeniNeodredjeni";
+import ActiveProfile from "./ActiveProfile";
+import useProfileStore from "@/_stores/activeProfile";
 
-type Person = {
-  kadrovskiBroj: string;
-  ime: string;
-  prezime: string;
-  datumRodjenja: Date;
-  jmbg: number;
-  slava: string;
-  ocena: string;
-  poslovniPodaci: string;
-};
-
-// The data prop can now be null or undefined
 type ProfilesProps = {
   data: Person[] | null;
 };
 
 export default function Profiles({ data }: ProfilesProps) {
   const [searchValue, setSearchValue] = useState<string>("");
+
+  const { activeEmployee, setActiveProfile } = useProfileStore();
 
   const groupedPeople = useMemo(() => {
     const searchTerm = searchValue.toLowerCase();
@@ -48,9 +41,11 @@ export default function Profiles({ data }: ProfilesProps) {
   }, [data, searchValue]);
 
   return (
-    <div className="max-w-screen min-h-screen flex flex-col p-10 gap-10">
-      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-      <div className="grid grid-cols-5 gap-10">
+    <div className="max-w-screen min-h-screen flex flex-col gap-10">
+      <div className="w-full flex justify-center p-10">
+        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+      </div>
+      <div className="grid grid-cols-5 gap-10 p-10">
         {Object.keys(groupedPeople)
           .sort()
           .map((letter) => {
@@ -71,6 +66,8 @@ export default function Profiles({ data }: ProfilesProps) {
             );
           })}
       </div>
+
+      {activeEmployee && <ActiveProfile />}
     </div>
   );
 }
