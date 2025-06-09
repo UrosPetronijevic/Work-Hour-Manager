@@ -7,15 +7,15 @@ export interface Employee {
 }
 
 interface ProfileState {
-  activeEmployee: Employee | null;
+  activeProfile: Employee | null;
   setActiveProfile: (employee: Employee) => void;
   clearActiveProfile: () => void;
 }
 
 const useProfileStore = create<ProfileState>((set) => ({
-  activeEmployee: null,
-  setActiveProfile: (employee) => set({ activeEmployee: employee }),
-  clearActiveProfile: () => set({ activeEmployee: null }),
+  activeProfile: null,
+  setActiveProfile: (employee) => set({ activeProfile: employee }),
+  clearActiveProfile: () => set({ activeProfile: null }),
 }));
 
 export default useProfileStore;

@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import SearchBar from "../_search/SearchBar";
 import SearchCard from "../_search/SearchCard";
 import { Person } from "@/_lib/_fetch/OdredjeniNeodredjeni";
-import ActiveProfile from "./ActiveProfile";
+import ActiveProfile from "./_active/ActiveProfile";
 import useProfileStore from "@/_stores/activeProfile";
 
 type ProfilesProps = {
@@ -14,7 +14,7 @@ type ProfilesProps = {
 export default function Profiles({ data }: ProfilesProps) {
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const { activeEmployee, setActiveProfile } = useProfileStore();
+  const { activeProfile, setActiveProfile } = useProfileStore();
 
   const groupedPeople = useMemo(() => {
     const searchTerm = searchValue.toLowerCase();
@@ -67,7 +67,7 @@ export default function Profiles({ data }: ProfilesProps) {
           })}
       </div>
 
-      {activeEmployee && <ActiveProfile />}
+      {activeProfile && <ActiveProfile data={data} />}
     </div>
   );
 }
