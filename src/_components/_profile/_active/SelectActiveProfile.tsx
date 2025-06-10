@@ -9,12 +9,6 @@ type ActiveProfileProps = {
   data: Person[] | null;
 };
 
-type ActiveProfile = {
-  name: string;
-  surname: string;
-  kdBroj: string;
-};
-
 export default function SelectActiveProfile({ data }: ActiveProfileProps) {
   const { setActiveProfile } = useProfileStore();
 
@@ -31,16 +25,9 @@ export default function SelectActiveProfile({ data }: ActiveProfileProps) {
       (employee: any) => employee.kadrovskiBroj === kdBroj
     );
 
-    // 4. If an employee is found, create the new object and update Zustand
+    // 4. If an employee is found, update Zustand
     if (selectedEmployee) {
-      const newActiveProfile: ActiveProfile = {
-        name: selectedEmployee.ime,
-        surname: selectedEmployee.prezime,
-        kdBroj: selectedEmployee.kadrovskiBroj,
-      };
-
-      // 5. Call the Zustand action with the newly created profile object
-      setActiveProfile(newActiveProfile);
+      setActiveProfile(selectedEmployee);
     }
   };
 
@@ -48,12 +35,12 @@ export default function SelectActiveProfile({ data }: ActiveProfileProps) {
     <label>
       <select value={selectedKdBroj} onChange={handleSelectionChange}>
         <option value="" disabled>
-          -- Please select --
+          -- Izaberite zaposlenog --
         </option>
         <option value="" hidden>
           Izaberi zaposlenog
         </option>
-        {data?.map((employee: any) => (
+        {data?.map((employee: Person) => (
           <option
             key={`${employee.ime}${employee.kadrovskiBroj}`}
             value={employee.kadrovskiBroj}

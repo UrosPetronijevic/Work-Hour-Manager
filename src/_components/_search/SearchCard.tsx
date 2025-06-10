@@ -1,12 +1,14 @@
 "use client";
 
-import useProfileStore, { Employee } from "@/_stores/activeProfile"; // Import Employee type
+import { Person } from "@/_lib/_fetch/OdredjeniNeodredjeni";
+import useProfileStore from "@/_stores/activeProfile"; // Import Employee type
 
 type SearchCardProps = {
   letter: string;
   employeeNames: string[];
   employeeSurnames: string[];
   employeeKdBroj: string[];
+  data: Person[] | null;
 };
 
 export default function SearchCard({
@@ -14,10 +16,11 @@ export default function SearchCard({
   employeeNames,
   employeeSurnames,
   employeeKdBroj,
+  data,
 }: SearchCardProps) {
   const { setActiveProfile } = useProfileStore();
 
-  const handleEmployeeClick = (employee: Employee) => {
+  const handleEmployeeClick = (employee: Person) => {
     setActiveProfile(employee);
   };
 
@@ -30,24 +33,25 @@ export default function SearchCard({
       </span>
       <ul>
         {employeeNames.map((name, index) => {
-          // Create the employee object for this item
-          const currentEmployee: Employee = {
-            name: name,
-            surname: employeeSurnames[index],
-            kdBroj: employeeKdBroj[index],
-          };
+          const currentEmployee = data?.find(
+            (employee) => employee.kadrovskiBroj === employeeKdBroj[index]
+          );
+
+          if (!currentEmployee) {
+            return null;
+          }
 
           return (
             <li
-              key={currentEmployee.kdBroj}
+              key={currentEmployee.kadrovskiBroj}
               className="flex w-full justify-between cursor-pointer hover:bg-slate-50 p-1 rounded"
               onClick={() => handleEmployeeClick(currentEmployee)}
             >
               <span className="font-semibold">
-                {currentEmployee.name} {currentEmployee.surname}
+                {currentEmployee.ime} {currentEmployee.prezime}
               </span>
               <span className="text-sm text-gray-500">
-                {currentEmployee.kdBroj}
+                {currentEmployee.kadrovskiBroj}
               </span>
             </li>
           );

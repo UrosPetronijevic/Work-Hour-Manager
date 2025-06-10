@@ -17,11 +17,11 @@ export default function ActiveProfileHeader({
     <div className="flex w-full justify-between">
       <p>
         <span className="font-bold"> Zaposleni: </span>
-        {activeProfile?.name} {activeProfile?.surname}
+        {activeProfile?.ime} {activeProfile?.prezime}
       </p>
       <p>
         <span className="font-bold">Kadrovski broj:</span>{" "}
-        {activeProfile?.kdBroj}
+        {activeProfile?.kadrovskiBroj}
       </p>
 
       <div>

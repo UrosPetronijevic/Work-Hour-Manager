@@ -1,14 +1,9 @@
+import { Person } from "@/_lib/_fetch/OdredjeniNeodredjeni";
 import { create } from "zustand";
 
-export interface Employee {
-  name: string;
-  surname: string;
-  kdBroj: string;
-}
-
 interface ProfileState {
-  activeProfile: Employee | null;
-  setActiveProfile: (employee: Employee) => void;
+  activeProfile: Person | null;
+  setActiveProfile: (employee: Person) => void;
   clearActiveProfile: () => void;
 }
 

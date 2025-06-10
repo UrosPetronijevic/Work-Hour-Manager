@@ -62,6 +62,7 @@ export default function Profiles({ data }: ProfilesProps) {
                 employeeNames={employeeNames}
                 employeeSurnames={employeeSurnames}
                 employeeKdBroj={employeeKdBroj}
+                data={data}
               />
             );
           })}
