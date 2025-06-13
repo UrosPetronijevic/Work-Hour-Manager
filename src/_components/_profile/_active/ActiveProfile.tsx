@@ -9,7 +9,7 @@ type ActiveProfileProps = {
 
 export default function ActiveProfile({ data }: ActiveProfileProps) {
   return (
-    <div className="min-h-screen w-full absolute bg-white flex flex-col p-8 justify-between">
+    <div className="min-h-screen w-full absolute bg-amber-100 flex flex-col p-8 justify-between">
       <ActiveProfileHeader data={data} />
 
       <ActiveProfileMain />
