@@ -10,11 +10,16 @@ import {
   isSameMonth,
   isToday,
 } from "@/_lib/_dates/currentDateData";
+import { useAbsenceStore } from "@/_stores/absencesStore";
 
 import { useState } from "react";
 
 export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+
+  const { selected, setSelected } = useAbsenceStore();
+
+  console.log(selected);
 
   /////////////////////////////////////////////////////////////////////////
 
@@ -47,6 +52,26 @@ export default function Calendar() {
 
   /////////////////////////////////////////////////////////////////////////
 
+  const handleDayClick = (day: Date): void => {
+    // Prevent selecting days from other months
+    if (!isSameMonth(day, currentMonth)) {
+      return;
+    }
+
+    const dayNumber = day.getDate();
+    const isAlreadySelected = selected.includes(dayNumber);
+
+    if (isAlreadySelected) {
+      // If already selected, remove it from the array
+      setSelected(selected.filter((d) => d !== dayNumber));
+    } else {
+      // If not selected, add it to the array
+      setSelected([...selected, dayNumber]);
+    }
+  };
+
+  /////////////////////////////////////////////////////////////////////////
+
   return (
     <div className="max-w-full rounded-lg bg-white px-4 py-8 shadow-lg">
       {/* Header */}
@@ -69,27 +94,43 @@ export default function Calendar() {
           </div>
         ))}
 
-        {calendarDays.map((day: Date) => (
-          <div
-            key={day.toString()}
-            className={`
-              flex p-4 py-5 cursor-pointer items-center justify-center rounded-full
-              ${
-                !isSameMonth(day, currentMonth)
-                  ? "text-gray-400 cursor-not-allowed"
-                  : ""
-              }
-              ${isToday(day) ? "bg-red-500 font-bold text-white" : ""}
-              ${
-                isSameMonth(day, currentMonth) && !isToday(day)
-                  ? "hover:bg-gray-200"
-                  : ""
-              }
-            `}
-          >
-            {day.getDate()}
-          </div>
-        ))}
+        {calendarDays.map((day: Date) => {
+          const isDaySelected = selected.includes(day.getDate());
+          const isDayInCurrentMonth = isSameMonth(day, currentMonth);
+          const isDayToday = isToday(day);
+
+          return (
+            <div
+              key={day.toString()}
+              className={`
+                flex p-4 py-5 cursor-pointer items-center justify-center rounded-full transition-colors duration-200
+                ${
+                  !isDayInCurrentMonth ? "text-gray-300 cursor-not-allowed" : ""
+                }
+                ${
+                  isDayToday && !isDaySelected
+                    ? "bg-red-500 font-bold text-white"
+                    : ""
+                }
+
+                ${
+                  isDaySelected && isDayInCurrentMonth
+                    ? "bg-blue-500 text-white"
+                    : ""
+                }
+
+                ${
+                  isDayInCurrentMonth && !isDayToday && !isDaySelected
+                    ? "hover:bg-gray-200"
+                    : ""
+                }
+              `}
+              onClick={() => handleDayClick(day)}
+            >
+              {day.getDate()}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
