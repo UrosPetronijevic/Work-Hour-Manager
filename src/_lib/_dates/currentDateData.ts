@@ -2,7 +2,7 @@
 const now = new Date();
 
 // Arrays to map the zero-indexed values to names
-const monthNames = [
+export const monthNames = [
   "Januar",
   "Februar",
   "Mart",

@@ -9,15 +9,26 @@ import {
   getStartOfWeek,
   isSameMonth,
   isToday,
+  monthNames,
 } from "@/_lib/_dates/currentDateData";
-import { useAbsenceStore } from "@/_stores/absencesStore";
 
-import { useState } from "react";
+import { useAbsenceStore, Absence } from "@/_stores/absencesStore";
+
+import { useMemo, useState } from "react";
+
+const absenceColorMap: { [key: string]: string } = {
+  "Bolovanje 100": "bg-yellow-400",
+  "Bolovanje 30": "bg-yellow-300",
+  "Bolovanje na teret fonda": "bg-yellow-200",
+  "Godisnji odmor": "bg-green-300",
+  "Placeno odsustvo": "bg-blue-400",
+  "Porodiljsko odsustvo": "bg-blue-300",
+};
 
 export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
-  const { selected, setSelected } = useAbsenceStore();
+  const { selected, setSelected, absences } = useAbsenceStore();
 
   console.log(selected);
 
@@ -34,6 +45,18 @@ export default function Calendar() {
     newDate.setMonth(newDate.getMonth() + 1);
     setCurrentMonth(newDate);
   };
+
+  /////////////////////////////////////////////////////////////////////////
+
+  const absenceLookup = useMemo(() => {
+    const map = new Map<string, Absence>();
+    absences.forEach((absence) => {
+      // The key uniquely identifies a day (e.g., "2025-Jun-24")
+      const key = `${absence.godina}-${absence.mesec}-${absence.dan}`;
+      map.set(key, absence);
+    });
+    return map;
+  }, [absences]);
 
   /////////////////////////////////////////////////////////////////////////
 
@@ -95,9 +118,19 @@ export default function Calendar() {
         ))}
 
         {calendarDays.map((day: Date) => {
+          // --- STEP 3: Update Rendering Logic ---
           const isDaySelected = selected.includes(day.getDate());
           const isDayInCurrentMonth = isSameMonth(day, currentMonth);
           const isDayToday = isToday(day);
+
+          // Create a key for the current day to look up in our map
+          const dayKey = `${day.getFullYear()}-${
+            monthNames[day.getMonth()]
+          }-${day.getDate()}`;
+          const absenceInfo = absenceLookup.get(dayKey);
+          const absenceBgColor = absenceInfo
+            ? absenceColorMap[absenceInfo.odsustva]
+            : null;
 
           return (
             <div
@@ -107,20 +140,34 @@ export default function Calendar() {
                 ${
                   !isDayInCurrentMonth ? "text-gray-300 cursor-not-allowed" : ""
                 }
-                ${
-                  isDayToday && !isDaySelected
-                    ? "bg-red-500 font-bold text-white"
-                    : ""
-                }
 
+                {/* Priority 1: Selected Day */}
                 ${
                   isDaySelected && isDayInCurrentMonth
                     ? "bg-blue-500 text-white"
                     : ""
                 }
 
+                {/* Priority 2: Today (if not selected) */}
                 ${
-                  isDayInCurrentMonth && !isDayToday && !isDaySelected
+                  !isDaySelected && isDayToday
+                    ? "bg-red-500 font-bold text-white"
+                    : ""
+                }
+
+                {/* Priority 3: Absence Day (if not selected and not today) */}
+                ${
+                  !isDaySelected && absenceBgColor && isDayInCurrentMonth
+                    ? `${absenceBgColor} text-gray-800`
+                    : ""
+                }
+
+                {/* Priority 4: Default Hover (if no other style applies) */}
+                ${
+                  isDayInCurrentMonth &&
+                  !isDaySelected &&
+                  !isDayToday &&
+                  !absenceBgColor
                     ? "hover:bg-gray-200"
                     : ""
                 }

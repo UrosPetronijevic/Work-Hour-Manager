@@ -73,8 +73,41 @@ export default function Absences() {
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  const handleDeleteAbsences = () => {
+    // 1. Guard clauses: Check for necessary data before proceeding.
+    if (!activeProfile) {
+      alert("Molimo Vas, izaberite aktivni profil.");
+      return;
+    }
+    if (selected.length === 0) {
+      alert("Molimo Vas, izaberite dane koje želite da obrišete.");
+      return;
+    }
+
+    // 2. Filter the absences array to create a new array with items to KEEP.
+    const updatedAbsences = absences.filter((absence) => {
+      // The condition to KEEP an absence is:
+      // EITHER it belongs to a different profile
+      // OR its day is NOT in the selected array.
+      const isDifferentProfile =
+        absence.kadrovskiBroj !== activeProfile.kadrovskiBroj;
+
+      const isDayNotSelected = !selected.includes(absence.dan);
+
+      return isDifferentProfile || isDayNotSelected;
+    });
+
+    setAbsences(updatedAbsences);
+    setSelected([]);
+
+    console.log("Deleted absences for selected days.");
+    console.log("Final state of absences:", updatedAbsences);
+  };
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
-    <div className="p-4 flex items-center justify-center">
+    <div className="p-4 flex flex-col items-center justify-center">
       <div className="bg-white shadow-md rounded-lg w-full overflow-hidden">
         <table className="w-full leading-normal cursor-pointer">
           <thead>
@@ -98,6 +131,12 @@ export default function Absences() {
           </tbody>
         </table>
       </div>
+      <button
+        onClick={handleDeleteAbsences}
+        className="bg-[#FF2400] text-white py-2 px-8 rounded-md w-2/3 mt-2 hover:bg-red-700 transition-colors duration-200"
+      >
+        Brisi
+      </button>
     </div>
   );
 }
