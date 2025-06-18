@@ -13,6 +13,7 @@ import {
 } from "@/_lib/_dates/currentDateData";
 
 import { useAbsenceStore, Absence } from "@/_stores/absencesStore";
+import useProfileStore from "@/_stores/activeProfile";
 
 import { useMemo, useState } from "react";
 
@@ -27,7 +28,7 @@ const absenceColorMap: { [key: string]: string } = {
 
 export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
-
+  const { activeProfile } = useProfileStore();
   const { selected, setSelected, absences } = useAbsenceStore();
 
   console.log(selected);
@@ -49,14 +50,24 @@ export default function Calendar() {
   /////////////////////////////////////////////////////////////////////////
 
   const absenceLookup = useMemo(() => {
+    // If there's no active profile, return an empty map so no colors are shown.
+    if (!activeProfile) {
+      return new Map<string, Absence>();
+    }
+
     const map = new Map<string, Absence>();
-    absences.forEach((absence) => {
-      // The key uniquely identifies a day (e.g., "2025-Jun-24")
-      const key = `${absence.godina}-${absence.mesec}-${absence.dan}`;
-      map.set(key, absence);
-    });
+    absences
+      // Filter absences to only include those for the current active profile.
+      .filter(
+        (absence) => absence.kadrovskiBroj === activeProfile.kadrovskiBroj
+      )
+      // Then, create the map from the filtered list.
+      .forEach((absence) => {
+        const key = `${absence.godina}-${absence.mesec}-${absence.dan}`;
+        map.set(key, absence);
+      });
     return map;
-  }, [absences]);
+  }, [absences, activeProfile]);
 
   /////////////////////////////////////////////////////////////////////////
 
